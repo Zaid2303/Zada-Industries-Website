@@ -1,5 +1,4 @@
-// script.js - Zada Industries Landing Page
-
+// script.js
 document.addEventListener("DOMContentLoaded", function() {
     const mainContainer = document.querySelector(".main-container");
     mainContainer.style.opacity = "0";
@@ -8,10 +7,4 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
         mainContainer.style.opacity = "1";
     }, 100);
-
-    const socialLinks = document.querySelectorAll(".social-links a");
-
-    socialLinks.forEach(link => {
-        link.addEventListener("mouseenter", () => {
-            link.styl...
-}
+});
