@@ -7,9 +7,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  .contact-container {
+}
+
+.contact-container {
     background: #fff;
     padding: 30px 40px;
     border-radius: 12px;
@@ -18,31 +18,31 @@ body {
     width: 100%;
     text-align: center;
     animation: fadeIn 0.8s ease;
-  }
-  
-  .contact-container h2 {
+}
+
+.contact-container h2 {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 600;
-  }
-  
-  .contact-form input,
-  .contact-form textarea {
+}
+
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
     transition: border-color 0.3s;
-  }
-  
-  .contact-form input:focus,
-  .contact-form textarea:focus {
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
     border-color: #333;
     outline: none;
-  }
-  
-  .contact-form button {
+}
+
+.contact-form button {
     padding: 12px 24px;
     border: none;
     background-color: #000;
@@ -51,26 +51,25 @@ body {
     cursor: pointer;
     font-weight: 600;
     transition: background 0.3s ease;
-  }
-  
-  .contact-form button:hover {
+}
+
+.contact-form button:hover {
     background-color: #333;
-  }
-  
-  .feedback {
+}
+
+.feedback {
     margin-top: 10px;
     font-size: 14px;
     color: green;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(40px);
+    opacity: 0;
+    transform: translateY(40px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
     }
-  }
-  
+}
