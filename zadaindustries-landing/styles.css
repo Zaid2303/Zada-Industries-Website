@@ -44,7 +44,7 @@ body {
 }
 
 .logo {
-  width: 100px;
+  width: 250px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -110,7 +110,7 @@ body.dark-mode {
 }
 
 body.dark-mode .card {
-  background: #1f1f1f;
+  background: #2e2e2e;
   color: #eee;
   box-shadow: 0 15px 40px rgba(255, 255, 255, 0.05);
 }
