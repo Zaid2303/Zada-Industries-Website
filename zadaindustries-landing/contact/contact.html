@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Us - Zada Industries">
-    <title>Contact Us - Zada Industries</title>
-    <link rel="stylesheet" href="contact.css">
-    <link rel="icon" href="../images/logo.png" type="image/png">
-    <script defer src="contact.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Us - Zada Industries" />
+  <title>Contact Us - Zada Industries</title>
+  <link rel="icon" href="../images/logo.png" type="image/png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="contact.css" />
+  <script defer src="../script.js"></script>
+  <script defer src="contact.js"></script>
 </head>
 <body>
-    <form class="contact-form" action="https://formspree.io/f/mwpozygq" method="POST">
-        <input type="text" id="name" name="name" placeholder="Your Name" required />
-        <input type="email" id="email" name="_replyto" placeholder="Your Email" required />
-        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-        <input type="hidden" name="_subject" value="New message from Zada Industries!">
-        <button type="submit">Send Message</button>
-        <p class="feedback"></p>
-        </form>
+  <!-- Back Button -->
+  <button class="back-button">← Back</button>
 
-    </div>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>Got questions or ideas? Drop us a line below and we'll get back to you soon!</p>
+    <form class="contact-form" action="https://formspree.io/f/mwpozygq" method="POST">
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="email" id="email" name="_replyto" placeholder="Your Email" required />
+      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+      <input type="hidden" name="_subject" value="New message from Zada Industries!" />
+      <button type="submit">Send Message</button>
+      <p class="feedback"></p>
+    </form>
+  </div>
 </body>
 </html>
