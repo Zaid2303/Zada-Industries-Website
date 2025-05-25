@@ -1,0 +1,74 @@
+/* about.css - Zada Industries About Page */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* allow scrolling on About page */
+body {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f4f4f9;
+  color: #111;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+.about-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 80px auto;
+  animation: fadeIn 0.8s ease;
+}
+
+body.dark-mode .about-container {
+  background: #1f1f1f;
+  box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+}
+
+.about-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.about-container p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #555;
+}
+
+body.dark-mode .about-container p {
+  color: #ccc;
+}
+
+.about-container ul {
+  list-style: disc inside;
+  font-size: 16px;
+}
+
+.about-container ul li {
+  margin-bottom: 10px;
+}
+
+.back-button {
+  position: fixed;
+  top: 20px; left: 20px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: inherit;
+}

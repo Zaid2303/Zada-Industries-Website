@@ -9,16 +9,58 @@
 }
 
 body {
-  font-family: 'Inter', 'Arial', sans-serif;
-  background: #f4f4f9;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(-45deg, #f1f1f1, #f1f1f1, #f1f1f1);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite, fadeIn 1s ease-in-out;
   color: #111;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  animation: fadeIn 1s ease-in-out;
   transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  background: currentColor;
+  color: #fff;
+}
+
+body.dark-mode .theme-toggle {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .theme-toggle:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Ensure light-mode hover turns black */
+body:not(.dark-mode) .theme-toggle:hover {
+  background: #000;
+  color: #fff;
 }
 
 .landing-container {
@@ -38,14 +80,16 @@ body {
   transition: transform 0.4s ease, background 0.5s ease, color 0.5s ease;
   animation: popIn 0.6s ease-in-out;
 }
-
+body.dark-mode .card {
+  background: #2e2e2e;
+  box-shadow: 0 15px 40px rgba(255,255,255,0.05);
+}
 .card:hover {
   transform: translateY(-5px);
 }
 
 .logo {
   width: 250px;
-  height: auto;
   margin-bottom: 20px;
 }
 
@@ -53,13 +97,19 @@ body {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: inherit;
 }
 
 .subtext {
+  min-height: 1.2em;
   font-size: 16px;
   color: #555;
   margin-bottom: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #555;
+}
+body.dark-mode .subtext {
+  border-right-color: #ccc;
 }
 
 .social-icons {
@@ -69,7 +119,7 @@ body {
   margin-bottom: 25px;
 }
 
-.social-icons a img {
+.social-icons img {
   width: 64px;
   height: 64px;
   transition: transform 0.3s ease;
@@ -79,8 +129,13 @@ body {
   transform: scale(1.15);
 }
 
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
 .cta-button {
-  display: inline-block;
   padding: 12px 28px;
   background: #000;
   color: #fff;
@@ -88,118 +143,48 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 15px;
 }
 
 .cta-button:hover {
-  background-color: #333;
+  background: #333;
   transform: translateY(-2px);
 }
 
+body.dark-mode .cta-button {
+  background: #eee;
+  color: #000;
+}
+
+body.dark-mode .cta-button:hover {
+  background: #ccc;
+}
+
 .footer {
-  text-align: center;
   margin-top: 20px;
   font-size: 13px;
   color: #888;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-  background: #121212;
-  color: #eee;
+@keyframes gradientBG {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
 }
 
-body.dark-mode .card {
-  background: #2e2e2e;
-  color: #eee;
-  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode .subtext {
-  color: #ccc;
-}
-
-body.dark-mode .cta-button {
-  background: #fff;
-  color: #000;
-}
-
-body.dark-mode .cta-button:hover {
-  background: #ddd;
-}
-
-body.dark-mode .footer {
-  color: #666;
-}
-
-/* Toggle Button */
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 8px 16px;
-  background: transparent;
-  border: 2px solid #000;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  background: #000;
-  color: #fff;
-}
-
-body.dark-mode .theme-toggle {
-  border-color: #fff;
-  color: #fff;
-}
-
-body.dark-mode .theme-toggle:hover {
-  background: #fff;
-  color: #000;
-}
-
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 @keyframes popIn {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Design */
 @media screen and (max-width: 500px) {
-  .card {
-    padding: 30px 20px;
-  }
-
-  .headline {
-    font-size: 26px;
-  }
-
-  .cta-button {
-    width: 100%;
-    padding: 14px 0;
-  }
-
-  .social-icons a img {
-    width: 64px;
-    height: 64px;
-  }
-
-  .theme-toggle {
-    padding: 6px 12px;
-    font-size: 14px;
-  }
+  .card { padding: 30px 20px; }
+  .headline { font-size: 26px; }
+  .cta-button { width: 100%; padding: 14px 0; }
+  .social-icons img { width: 32px; height: 32px; }
+  .theme-toggle { padding: 6px 12px; font-size: 14px; }
 }

@@ -1,35 +1,45 @@
 // script.js - Zada Industries Landing Page
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Fade-in animation for the main landing container
-    const mainContainer = document.querySelector(".landing-container");
-    if (mainContainer) {
-        mainContainer.style.opacity = "0";
-        mainContainer.style.transition = "opacity 1s ease-in-out";
-        setTimeout(() => {
-            mainContainer.style.opacity = "1";
-        }, 100);
+document.addEventListener("DOMContentLoaded", () => {
+    // Fade-in for main container
+    const main = document.querySelector(".landing-container");
+    if (main) {
+      main.style.opacity = "0";
+      main.style.transition = "opacity 1s ease-in-out";
+      setTimeout(() => (main.style.opacity = "1"), 100);
     }
-
-    // Dark mode toggle functionality
-    const toggleBtn = document.querySelector(".theme-toggle");
-    if (toggleBtn) {
-        // Load saved theme or use system preference
-        const savedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const currentTheme = savedTheme || (prefersDark ? "dark" : "light");
-
-        if (currentTheme === "dark") {
-            document.body.classList.add("dark-mode");
+  
+    // Typewriter effect for the tagline
+    const sub = document.querySelector(".subtext");
+    if (sub) {
+      const full = sub.textContent;
+      sub.textContent = "";
+      let i = 0;
+      function type() {
+        if (i < full.length) {
+          sub.textContent += full.charAt(i++);
+          setTimeout(type, 50);
+        } else {
+          sub.style.borderRight = "none";
         }
-        toggleBtn.textContent = currentTheme === "dark" ? "Light Mode" : "Dark Mode";
-
-        // Toggle on button click
-        toggleBtn.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            const newTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-            localStorage.setItem("theme", newTheme);
-            toggleBtn.textContent = newTheme === "dark" ? "Light Mode" : "Dark Mode";
-        });
+      }
+      setTimeout(type, 1000);
     }
-});
+  
+    // Dark mode toggle
+    const btn = document.querySelector(".theme-toggle");
+    if (btn) {
+      const saved = localStorage.getItem("theme");
+      const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      let theme = saved || (prefers ? "dark" : "light");
+      document.body.classList.toggle("dark-mode", theme === "dark");
+      btn.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
+  
+      btn.addEventListener("click", () => {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        btn.textContent = isDark ? "Light Mode" : "Dark Mode";
+      });
+    }
+  });
+  
