@@ -10,32 +10,57 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <button class="theme-toggle">Dark Mode</button>
 
-  <main class="landing-container">
+  <!-- Arrows -->
+  <button class="arrow left" onclick="prevCard()">&#10094;</button>
+  <button class="arrow right" onclick="nextCard()">&#10095;</button>
+
+  <!-- Carousel -->
+  <main class="carousel">
+
+    <!-- Card 0: Settings -->
+    <section class="card">
+      <h2>Settings</h2>
+      <button class="cta-button theme-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </section>
+
+    <!-- Card 1: Main Profile -->
     <section class="card">
       <img id="logo" src="images/logo1.png" alt="Zada Industries Logo" class="logo" />
       <h1 class="headline">Zada Industries</h1>
       <p class="subtext">Building Digital Solutions for the Future</p>
+
       <div class="social-icons">
-        <a href="https://instagram.com/zadaindustries" target="_blank">
-          <img src="images/instagram.png" alt="Instagram" />
-        </a>
-        <a href="https://www.tiktok.com/@zada_industries" target="_blank">
-          <img src="images/tiktok.png" alt="TikTok" />
-        </a>
-        <a href="https://youtube.com/@zadaindustries" target="_blank">
-          <img src="images/youtube.png" alt="YouTube" />
-        </a>
+        <a href="https://instagram.com/zadaindustries" target="_blank"><img src="images/instagram.png" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@zada_industries" target="_blank"><img src="images/tiktok.png" alt="TikTok" /></a>
+        <a href="https://youtube.com/@zadaindustries" target="_blank"><img src="images/youtube.png" alt="YouTube" /></a>
       </div>
+
       <div class="buttons">
         <a href="about/about.html" class="cta-button">About Us</a>
         <a href="contact/contact.html" class="cta-button">Contact Us</a>
       </div>
+
+      <footer class="footer">
+        <p>&copy; 2025 Zada Industries. All rights reserved.</p>
+      </footer>
     </section>
-    <footer class="footer">
-      <p>&copy; 2025 Zada Industries. All rights reserved.</p>
-    </footer>
+
+    <!-- Card 2: Projects -->
+    <section class="card">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>🧠 Let It Out</h3>
+        <p>A calming space to vent your thoughts. No saving. Just release.</p>
+        <div class="buttons">
+          <a href="Let-It-Out\index.html" class="cta-button">Try It Now</a>
+        </div>
+      </div>
+    </section>
+
+
+
+
   </main>
 </body>
 </html>
