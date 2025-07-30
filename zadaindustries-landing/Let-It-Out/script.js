@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const chatContainer = document.getElementById('chat-container');
-  const userInput = document.getElementById('user-input');
-  const sendBtn = document.getElementById('send-btn');
-  const releaseContainer = document.getElementById('release-container');
-  const releaseBtn = document.getElementById('release-btn');
+  const chatContainer = document.getElementById('chatContainer');
+  const userInput = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const releaseContainer = document.getElementById('releaseContainer');
+  const releaseBtn = document.getElementById('releaseBtn');
   const app = document.getElementById('app');
 
   let name = '';
@@ -42,17 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
     userInput.value = '';
     if (state === 'askName') {
       name = text.split(' ')[0];
-      appendMessage(`Nice to meet you, ${name}. How are you feeling today?`);
-      state = 'askComfort';
-    } else if (state === 'askComfort') {
-      appendMessage("Thank you for sharing. Whenever you're ready, feel free to let it all out.");
+      appendMessage('Nice to meet you, ' + name + '. How are you feeling today?', 'bot');
+      state = 'askFeel';
+    } else if (state === 'askFeel') {
+      appendMessage("Thank you for sharing how you're feeling. Is there something specific that's on your mind?", 'bot');
+      state = 'askTopic';
+    } else if (state === 'askTopic') {
+      appendMessage("Thanks for letting me know. When you're ready, feel free to let it all out.", 'bot');
       releaseContainer.style.display = 'block';
       state = 'venting';
     } else if (state === 'venting') {
       ventText += (ventText ? ' ' : '') + text;
       const danger = checkDanger(text);
       if (danger) {
-        appendMessage(`It seems you've mentioned "${danger}". That sounds heavy; please consider reaching out to a professional.`, 'bot', true);
+        alert("I noticed you mentioned \"" + danger + "\". Please consider talking to a professional if you're feeling overwhelmed.");
+        appendMessage("It seems you've mentioned \"" + danger + "\". That sounds heavy; please consider reaching out to a professional.", 'warning', true);
+      } else {
+        appendMessage('Thanks for sharing.', 'bot');
       }
     }
   }
@@ -66,9 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   releaseBtn.addEventListener('click', () => {
-    // hide chat interface
     app.style.display = 'none';
-    // create effect container
     const effect = document.createElement('div');
     effect.id = 'effect';
     effect.style.position = 'relative';
@@ -80,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     effect.style.overflow = 'hidden';
     document.body.appendChild(effect);
 
-    // create text element
     const textEl = document.createElement('div');
     textEl.id = 'ventText';
     textEl.textContent = ventText || userInput.value;
@@ -89,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
     textEl.style.whiteSpace = 'pre-wrap';
     effect.appendChild(textEl);
 
-    // choose random animation
     const animations = [fallingLetters, rocketExplosion, waveWash];
     const random = Math.floor(Math.random() * animations.length);
     animations[random](textEl, effect);
@@ -114,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.style.position = 'relative';
     const rocket = document.createElement('div');
     rocket.classList.add('rocket');
-    rocket.textContent = '🚀';
+    rocket.textContent = '';
     container.appendChild(rocket);
     setTimeout(() => {
       textEl.classList.add('explode');
@@ -134,6 +136,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       container.innerHTML = '<p style="font-size:24px;">All washed away like waves.</p>';
     }, 3000);
-  
-
+  }
 });
