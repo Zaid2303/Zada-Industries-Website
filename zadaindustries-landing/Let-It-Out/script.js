@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const chatContainer = document.getElementById('chatContainer');
-  const userInput = document.getElementById('userInput');
-  const sendBtn = document.getElementById('sendBtn');
-  const releaseContainer = document.getElementById('releaseContainer');
-  const releaseBtn = document.getElementById('releaseBtn');
+const chatContainer = document.getElementById('chatContainer') || document.getElementById('chat-container');
+const userInput = document.getElementById('userInput') || document.getElementById('user-input');
+  const sendBtn = document.getElementById('sendBtn') || document.getElementById('send-btn');
+  const releaseContainer = document.getElementById('releaseContainer') || document.getElementById('release-container');
+const inputContainer = document.querySelector('.input-container') || document.getElementById('inputContainer');
   const inputContainer = document.querySelector('.input-container');
   const app = document.getElementById('app');
 
